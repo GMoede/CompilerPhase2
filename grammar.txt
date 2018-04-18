@@ -1,0 +1,39 @@
+expression -> expressionOR
+expressionOR -> expressionOR || expressionAND
+    | expressionAND
+expressionAND -> expressionAND && expressionEQUALITY
+    | expressionEQUALITY
+expressionEQUALITY -> expressionEQUALITY == expressionCOMPARE
+    | expressionEQUALITY != expressionCOMPARE
+    | expressionCOMPARE
+expressionCOMPARE -> expressionCOMPARE < expressionADDSUB
+    | expressionCOMPARE > expressionADDSUB
+    | expressionCOMPARE <= expressionADDSUB
+    | expressionCOMPARE >= expressionADDSUB
+    | expressionADDSUB
+expressionADDSUB -> expressionADDSUB + expressionMULDIVREM
+    | expressionADDSUB - expressionMULDIVREM
+    | expressionMULDIVREM
+expressionMULDIVREM -> expressionMULDIVREM * expressionTYPECAST
+    | expressionMULDIVREM / expressionTYPECAST
+    | expressionMULDIVREM % expressionTYPECAST
+    | expressionTYPECAST
+expressionTYPECAST -> (specifier pointers) expressionTYPECAST
+    | expressionPREFI
+expressionPREFIX -> & expressionPREFIX
+    | * expressionPREFIX
+    | ! expressionPREFIX
+    | - expressionPREFIX
+    | sizeof expressionPREFIX
+    | sizeof (specifier pointers)
+    | expressionBRACKETS
+expressionBRACKETS -> [ expressionBRACKETS ]
+    | id (expressionList)
+    | id ()
+    | id
+    | num
+    | string
+    | ( expression )
+expressionLIST -> expression , expressionLIST
+    | expression
+    
